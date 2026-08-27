@@ -1,4 +1,4 @@
-# 📊 CSV Table Viewer
+# 📊 CSV Viewer
 
 Open `.csv` and `.tsv` files as a clean, searchable table directly in VS Code.
 
