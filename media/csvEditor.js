@@ -234,13 +234,13 @@
     // Status line (tells user how many rows are shown, filtered, truncated, etc.)
     const filterNote = query ? ` (filtered from ${data.rows.length})` : '';
     const truncNote = data.truncated
-      ? ` — showing first ${data.rows.length.toLocaleString()} of ${data.totalRowCount.toLocaleString()} total rows`
+      ? ` - showing first ${data.rows.length.toLocaleString()} of ${data.totalRowCount.toLocaleString()} total rows`
       : '';
     rowCountEl.textContent = `${sorted.length.toLocaleString()} row${sorted.length === 1 ? '' : 's'}${filterNote}${truncNote}`;
 
     if (data.truncated) {
       warningBanner.hidden = false;
-      warningBanner.textContent = `This file has ${data.totalRowCount.toLocaleString()} rows — only the first ${data.rows.length.toLocaleString()} are shown for performance. Increase "csvTableViewer.maxRows" in Settings, or use "Open as Text" for the full file.`;
+      warningBanner.textContent = `This file has ${data.totalRowCount.toLocaleString()} rows - only the first ${data.rows.length.toLocaleString()} are shown for performance. Increase "csvTableViewer.maxRows" in Settings, or use "Open as Text" for the full file.`;
     } else {
       warningBanner.hidden = true;
     }
