@@ -64,7 +64,9 @@ Just open the file and you're ready to go.
 
     That means the table follows your current VS Code theme, including light and dark themes.
 
-![CSV Table Viewer dark theme](images/csv-table-viewer-dark.png)
+### Interated copying system
+
+    Double click any cell and copy its value!
 
 ## Settings
 

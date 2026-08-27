@@ -187,6 +187,14 @@ td.numeric {
   font-variant-numeric: tabular-nums;
 }
 
+td.copied {
+  background: var(
+    --vscode-list-focusBackground,
+    var(--vscode-editor-selectionBackground)
+  );
+  transition: background-color 0.15s ease;
+}
+
 td mark, th mark {
   background: var(--vscode-editor-findMatchHighlightBackground, #ea5c0055);
   color: inherit;
