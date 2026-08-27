@@ -1,5 +1,5 @@
 {
-  "name": "csv-table-viewer",
+  "name": "csv-viewer",
   "displayName": "CSV Viewer",
   "description": "Open CSV files as a clean, searchable, sortable table that looks native to VS Code. No more squinting at raw commas!",
   "version": "1.0.0", 
