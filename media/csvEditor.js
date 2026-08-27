@@ -1,3 +1,9 @@
+// the main table logic, written by claude and modified by eliasbloem
+// fixed a few bugs and added some features, like the "open as text" button and a better search experience
+// fixed a bug where the text was added as innerhtml instead of textContent, which could lead to XSS if the CSV contained HTML and the user searched for it
+// fixed a bug where the sort indicator was not updated when the user sorted a column
+// also made everything prettier and matching with the current new VSCODE update 
+
 (function () {
   const vscode = acquireVsCodeApi();
 

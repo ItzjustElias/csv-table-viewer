@@ -96,7 +96,7 @@ export class CsvEditorProvider implements vscode.CustomTextEditorProvider {
     return parts[parts.length - 1] || uri.path;
   }
 
-  private getHtml(webview: vscode.Webview): string {
+  private getHtml(webview: vscode.Webview): string { // never put any user data in here, it can be exploited by a malicious CSV file. Only use the webview.asWebviewUri() for local resources.
     const scriptUri = webview.asWebviewUri(vscode.Uri.joinPath(this.context.extensionUri, 'media', 'csvEditor.js'));
     const styleUri = webview.asWebviewUri(vscode.Uri.joinPath(this.context.extensionUri, 'media', 'csvEditor.css'));
     const nonce = getNonce();
