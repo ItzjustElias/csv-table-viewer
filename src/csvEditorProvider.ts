@@ -117,7 +117,7 @@ export class CsvEditorProvider implements vscode.CustomTextEditorProvider {
     <button id="openAsText" class="link-button" title="Open the raw file in the default text editor">Open as Text</button>
   </div>
   <div id="warningBanner" class="banner" role="status" hidden></div>
-  <div id="tableWrapper">
+  <div id="tableWrapper" title="Double-click a cell to copy its value">
     <table id="csvTable">
       <thead id="csvHead"></thead>
       <tbody id="csvBody"></tbody>
