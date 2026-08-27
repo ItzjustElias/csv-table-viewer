@@ -41,6 +41,12 @@ function countOutsideQuotes(line: string, char: string): number {
   return count;
 }
 
+// strip BOM (Byte Order Mark) from the beginning of the text if present to
+// avoid issues with parsing. BOM is a Unicode character used to signal the endianness of a text file or stream.
+export function stripBom(text: string): string {
+  return text.charCodeAt(0) === 0xfeff ? text.slice(1) : text;
+}
+
 export function parseCsv(text: string, delimiter: Delimiter, maxRows: number): ParsedCsv {
   const rows: string[][] = [];
   let field = '';

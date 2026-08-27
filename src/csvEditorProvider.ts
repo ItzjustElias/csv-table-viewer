@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { parseCsv, detectDelimiter, Delimiter } from './csvParser';
+import { parseCsv, detectDelimiter, stripBom, Delimiter } from './csvParser';
 
 export class CsvEditorProvider implements vscode.CustomTextEditorProvider {
   public static readonly viewType = 'csvTableViewer.editor';
@@ -31,7 +31,7 @@ export class CsvEditorProvider implements vscode.CustomTextEditorProvider {
       const delimiterSetting = config.get<string>('delimiter', 'auto');
       const pageSize = config.get<number>('pageSize', 200);
 
-      const text = document.getText();
+      const text = stripBom(document.getText());
       const firstLine = text.split(/\r\n|\r|\n/, 1)[0] ?? '';
       const override = this.settingToDelimiter(delimiterSetting);
       const delimiter = detectDelimiter(firstLine, override);
