@@ -1,0 +1,105 @@
+{
+  "name": "csv-table-viewer",
+  "displayName": "CSV Table Viewer",
+  "description": "Open CSV files as a clean, searchable, sortable table that looks native to VS Code. No more squinting at raw commas!",
+  "version": "1.0.0", 
+  "publisher": "eliasbloem",
+  "license": "MIT",
+  "icon": "media/icon.png",
+  "galleryBanner": {
+    "color": "#1e1e1e",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ItzjustElias/csv-table-viewer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ItzjustElias/csv-table-viewer/issues"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Visualization", "Data Science", "Other"],
+  "keywords": ["csv", "tsv", "table", "viewer", "spreadsheet", "data"],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "csvTableViewer.editor",
+        "displayName": "CSV Table Viewer",
+        "selector": [
+          { "filenamePattern": "*.csv" },
+          { "filenamePattern": "*.tsv" }
+        ],
+        "priority": "default"
+      }
+    ],
+    "commands": [
+      {
+        "command": "csvTableViewer.openAsText",
+        "title": "Open as Plain Text",
+        "category": "CSV Table Viewer",
+        "icon": "$(file-text)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "csvTableViewer.openAsText",
+          "when": "activeCustomEditorId == 'csvTableViewer.editor'",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "CSV Table Viewer",
+      "properties": {
+        "csvTableViewer.pageSize": {
+          "type": "number",
+          "default": 200,
+          "minimum": 25,
+          "maximum": 2000,
+          "description": "Number of rows shown per page in the table."
+        },
+        "csvTableViewer.maxRows": {
+          "type": "number",
+          "default": 20000,
+          "minimum": 100,
+          "maximum": 200000,
+          "description": "Hard cap on rows parsed from very large files, to keep the editor responsive. Files beyond this show a truncation notice."
+        },
+        "csvTableViewer.delimiter": {
+          "type": "string",
+          "enum": ["auto", "comma", "semicolon", "tab", "pipe"],
+          "default": "auto",
+          "description": "Field delimiter. 'auto' inspects the header row and picks the most likely delimiter (comma, semicolon, tab, or pipe)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts",
+    "pretest": "npm run compile && npm run lint",
+    "test": "node ./out/test/runTest.js",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^20.11.0",
+    "@types/mocha": "^10.0.6",
+    "@types/glob": "^8.1.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3",
+    "@vscode/vsce": "^2.24.0",
+    "@vscode/test-electron": "^2.3.9",
+    "mocha": "^10.3.0",
+    "glob": "^10.3.10"
+  }
+}
